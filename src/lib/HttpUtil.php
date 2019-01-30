@@ -1,11 +1,12 @@
 <?php
+namespace Sms\Wlwx;
 
 /**
  * Created by PhpStorm.
  * User: zhouzhao
  * Date: 2017年4月11日 12:03:16
  */
-require_once('Result.php');
+//require_once('Result.php');
 class HttpUtil {
     /**
      * 发送post请求，返回json格式
@@ -30,13 +31,13 @@ class HttpUtil {
         }while((curl_errno($ch) !== 0) && $retry<$GLOBALS['WLWX_CONFIG']['RETRY_TIMES']);
 
         if (curl_errno($ch) !== 0) {
-            $r = new Result(null, $post_data, null,curl_error($ch));
+            $r = new Sms\Wlwx\Result(null, $post_data, null,curl_error($ch));
             curl_close($ch);
             return $r;
         }
         $output = trim($output, "\xEF\xBB\xBF");
         $statusCode = curl_getinfo($ch,CURLINFO_HTTP_CODE);
-        $ret = new Result($statusCode,$post_data,json_decode($output,true),null);
+        $ret = new Sms\Wlwx\Result($statusCode,$post_data,json_decode($output,true),null);
         curl_close($ch);
         return $ret;
     }
@@ -64,12 +65,12 @@ class HttpUtil {
         }while((curl_errno($ch) !== 0) && $retry<$GLOBALS['WLWX_CONFIG']['RETRY_TIMES']);
 
         if (curl_errno($ch) !== 0) {
-            $r = new Result(null, $post_data, null,curl_error($ch));
+            $r = new Sms\Wlwx\Result(null, $post_data, null,curl_error($ch));
             curl_close($ch);
             return $r;
         }
         $statusCode = curl_getinfo($ch,CURLINFO_HTTP_CODE);
-        $ret = new Result($statusCode,$post_data,$output,null);
+        $ret = new Sms\Wlwx\Result($statusCode,$post_data,$output,null);
         curl_close($ch);
         return $ret;
     }

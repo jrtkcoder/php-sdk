@@ -1,4 +1,5 @@
 <?php
+namespace Sms\Wlwx;
 
 /**
  * Created by PhpStorm.

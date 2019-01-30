@@ -1,11 +1,12 @@
 <?php
+namespace Sms\Wlwx;
 /**
  * Created by PhpStorm.
  * User: zhouzhao
  * Date: 2017年4月10日 17:55:23
  */
 
-require_once('HttpUtil.php');
+//require_once('HttpUtil.php');
 
 class MultiSmsOperator {
     public $uid;
@@ -48,7 +49,7 @@ class MultiSmsOperator {
             $o.= "$k=" .$v."&" ;
         }
         $post_data = substr($o,0,-1);
-        return HttpUtil::PostCURL_Multi($this->wlwx_config['URI_SEND_MULTI_SMS'], $post_data);
+        return Sms\Wlwx\HttpUtil::PostCURL_Multi($this->wlwx_config['URI_SEND_MULTI_SMS'], $post_data);
     }
 
     /**

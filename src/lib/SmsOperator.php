@@ -1,11 +1,12 @@
 <?php
+namespace Sms\Wlwx;
 /**
  * Created by PhpStorm.
  * User: zhouzhao
  * Date: 2017年4月10日 17:55:23
  */
 
-require_once('HttpUtil.php');
+//require_once('HttpUtil.php');
 
 class SmsOperator {
     public $cust_code;
@@ -54,7 +55,7 @@ class SmsOperator {
         $data['need_report'] = $this->need_report;
         $data['uid'] = $this->uid;
         $data['sign'] =   md5($data['content'].$this->cust_pwd);
-        return HttpUtil::PostCURL($this->wlwx_config['URI_SEND_COMMON_SMS'], json_encode($data));
+        return Sms\Wlwx\HttpUtil::PostCURL($this->wlwx_config['URI_SEND_COMMON_SMS'], json_encode($data));
     }
 
     /**
@@ -70,7 +71,7 @@ class SmsOperator {
         $data['cust_code'] = $this->cust_code;
         $data['sp_code'] = $this->sp_code;
         $data['sign'] =   md5($data['content'].$this->cust_pwd);
-        return HttpUtil::PostCURL($this->wlwx_config['URI_SEND_VARIANT_SMS'], json_encode($data));
+        return Sms\Wlwx\HttpUtil::PostCURL($this->wlwx_config['URI_SEND_VARIANT_SMS'], json_encode($data));
     }
 
     /**
@@ -79,7 +80,7 @@ class SmsOperator {
      */
     private function get_token() {
         $data['cust_code'] = $this->wlwx_config['CUST_CODE'];
-        return HttpUtil::PostCURL($this->wlwx_config['URI_GET_TOKEN'], json_encode($data));
+        return Sms\Wlwx\HttpUtil::PostCURL($this->wlwx_config['URI_GET_TOKEN'], json_encode($data));
     }
 
     /**
@@ -99,7 +100,7 @@ class SmsOperator {
      * @return Result
      */
     public function get_report() {
-        return HttpUtil::PostCURL($this->wlwx_config['URI_GET_REPORT'], json_encode($this->get_queryInfo()));
+        return Sms\Wlwx\HttpUtil::PostCURL($this->wlwx_config['URI_GET_REPORT'], json_encode($this->get_queryInfo()));
     }
 
     /**
@@ -107,7 +108,7 @@ class SmsOperator {
      * @return Result
      */
     public function get_mo() {
-        return HttpUtil::PostCURL($this->wlwx_config['URI_GET_MO'], json_encode($this->get_queryInfo()));
+        return Sms\Wlwx\HttpUtil::PostCURL($this->wlwx_config['URI_GET_MO'], json_encode($this->get_queryInfo()));
     }
 
     /**
@@ -115,7 +116,7 @@ class SmsOperator {
      * @return Result
      */
     public function get_account() {
-        return HttpUtil::PostCURL($this->wlwx_config['URI_QUERY_ACCOUNT'], json_encode($this->get_queryInfo()));
+        return Sms\Wlwx\HttpUtil::PostCURL($this->wlwx_config['URI_QUERY_ACCOUNT'], json_encode($this->get_queryInfo()));
     }
 
     /**
@@ -129,6 +130,6 @@ class SmsOperator {
         array_splice($data,2,1);
         $data['passwd'] = $sign;
         $data['temp_content'] = $temp_content;
-        return HttpUtil::PostCURL($this->wlwx_config['URI_SMS_TEMPLATE'], json_encode($data));
+        return Sms\Wlwx\HttpUtil::PostCURL($this->wlwx_config['URI_SMS_TEMPLATE'], json_encode($data));
     }
 }
