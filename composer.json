@@ -1,0 +1,12 @@
+{
+    "name": "jrtkcoder/php-sdk",
+    "type": "project",
+	"repositories": [
+		{ "type": "composer", "url": "https://github.com/" }
+    ],
+    "require": {
+    },
+	"config": {
+		"secure-http": false
+	}
+}
