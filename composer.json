@@ -1,5 +1,5 @@
 {
-    "name": "jrtkcoder/php-sdk",
+    "name": "jrtkcoder/sms-wlwx-sdk",
     "description":  "未来无线发送短信sdk",
     "keywords": ["send msg","Wlwx"],
     "authors": [
