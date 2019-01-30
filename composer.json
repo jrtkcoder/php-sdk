@@ -2,7 +2,6 @@
     "name": "jrtkcoder/php-sdk",
     "description":  "未来无线发送短信sdk",
     "keywords": ["send msg","Wlwx"],
-    "license": "MIT",
     "authors": [
         {
             "name": "jrtkcoder",
