@@ -1,6 +1,6 @@
 <?php
 /*
- * config file
+ * config file  
  */
 
 $wlwx_config = array();
